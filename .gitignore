@@ -1,0 +1,6 @@
+node_modules/
+build/
+attachment/
+public/build
+public/node_modules
+ipLog.txt
