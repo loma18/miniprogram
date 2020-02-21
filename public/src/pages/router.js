@@ -9,6 +9,11 @@ const ErrorPage = Loadable(() => import('components/common/404'));
 export default props => (
 	<Switch>
 		<Route
+			exact
+			path='/'
+			component={Home}
+		/>
+		<Route
 			path={ROUTE_PATH.home}
 			component={Home}
 		/>

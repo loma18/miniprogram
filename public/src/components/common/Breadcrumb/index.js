@@ -15,8 +15,16 @@ class LomaBreadcrumb extends Component {
 
 	getRoutes = () => {
 		let menus = getDictMenus();
-		let pathname = window.location.pathname.split('/');
+		let pathname = window.location.pathname.replace(/\/$/, '').split('/');
 		let routes = [{ path: '', breadcrumbName: '当前位置' }];
+		if(!pathname[1]){
+			routes.push({
+				path: '',
+				breadcrumbName: '首页'
+			})
+			this.setState({ routes });
+			return;
+		}
 		if (pathname[2]) {
 			routes.push({
 				path: menus[menus[pathname[1]].defaultChildKey].path,
