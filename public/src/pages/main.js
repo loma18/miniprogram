@@ -16,9 +16,10 @@ const rootKey = getRootLevelKey();
 class Main extends Component {
 	constructor(props) {
 		super(props);
+		let pathname = window.location.pathname.replace(/\/$/, '').split('/');
 		this.state = {
-			selKey: 'home',
-			openKeys: ['home']
+			selKey: pathname[pathname.length - 1] || 'home',
+			openKeys: pathname[1] ? [pathname[1]] : ['home']
 		}
 	}
 
