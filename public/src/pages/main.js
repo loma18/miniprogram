@@ -38,7 +38,16 @@ class Main extends Component {
 		}
 	};
 
-	componentDidUpdate() { }
+	changeUrl = () => {
+		let pathname = window.location.pathname.replace(/\/$/, '').split('/');
+		this.setState({
+			selKey: pathname[pathname.length - 1]
+		})
+	}
+
+	componentDidUpdate() {
+		console.log('loma')
+	}
 
 	componentDidMount() {
 	}
@@ -63,7 +72,7 @@ class Main extends Component {
 							</Menu>
 						</Sider>
 						<Layout className={'main'}>
-							<LomaBreadcrumb />
+							<LomaBreadcrumb handleClick={this.changeUrl}/>
 							<Content
 								style={{
 									background: '#fff',

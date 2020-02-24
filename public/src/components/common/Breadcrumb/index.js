@@ -17,7 +17,7 @@ class LomaBreadcrumb extends Component {
 		let menus = getDictMenus();
 		let pathname = window.location.pathname.replace(/\/$/, '').split('/');
 		let routes = [{ path: '', breadcrumbName: '当前位置' }];
-		if(!pathname[1]){
+		if (!pathname[1]) {
 			routes.push({
 				path: '',
 				breadcrumbName: '首页'
@@ -54,8 +54,11 @@ class LomaBreadcrumb extends Component {
 			);
 	};
 
-	UNSAFE_componentWillReceiveProps() {
+	UNSAFE_componentWillReceiveProps(props) {
 		this.getRoutes();
+		if (props.location.pathname != this.props.location.pathname && typeof (this.props.handleClick) == 'function') {
+			this.props.handleClick();
+		}
 	}
 
 	componentDidMount() {

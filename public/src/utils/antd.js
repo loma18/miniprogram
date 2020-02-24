@@ -9,7 +9,7 @@ export const getMenuEle = (menus) => {
     return menus.map(item => {
         ele = <Menu.Item key={item.key}>
             <Link to={item.path}>
-                <Icon type="pie-chart" />
+                <Icon type={item.icon} />
                 <span>{item.title}</span>
             </Link>
         </Menu.Item>
