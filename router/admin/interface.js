@@ -74,11 +74,11 @@ router.post("/interface/save", (req, res) => {
             sql = "",
             params = [];
         if (obj.id) {
-            sql = "UPDATE miniprogram_interface SET moduleId =?,fieldList=?,paramType=?,methods=?,title=?,routePath=?,resFieldList=? WHERE id=?";
+            sql = "UPDATE miniprogram_interface SET moduleId =?,fieldList=?,paramType=?,methods=?,title=?,ROUTE_PATH=?,resFieldList=? WHERE id=?";
         } else {
             sql = "INSERT INTO miniprogram_interface VALUES(null,?,?,?,?,?,?,?)";
         }
-        params = [obj.moduleId, obj.fieldList, obj.paramType, obj.methods, obj.title, obj.routePath, obj.resFieldList, obj.id];
+        params = [obj.moduleId, obj.fieldList, obj.paramType, obj.methods, obj.title, obj.ROUTE_PATH, obj.resFieldList, obj.id];
         sqlConnect.query(sql, params, (err, result, fields) => {
             if (err) {
                 res.json({ code: 500, msg: err });
@@ -95,7 +95,7 @@ router.post("/interface/save", (req, res) => {
 
 /**获取接口列表 */
 router.get("/interface/getList", (req, res) => {
-    let sql = "SELECT t1.title,t1.routePath,t1.moduleId,t1.id,t2.title as titles FROM miniprogram_interface as t1 left join miniprogram_interfaceGroup as t2 on t1.moduleId = t2.gid";
+    let sql = "SELECT t1.title,t1.ROUTE_PATH,t1.moduleId,t1.id,t2.title as titles FROM miniprogram_interface as t1 left join miniprogram_interfaceGroup as t2 on t1.moduleId = t2.gid";
     sqlConnect.query(sql, [], (err, result, fields) => {
         if (err) {
             res.json({ code: 500, msg: err });
@@ -111,7 +111,7 @@ router.get("/interface/getList", (req, res) => {
                 obj[item.moduleId].value.push({
                     id: item.id,
                     title: item.title,
-                    routePath: item.routePath
+                    ROUTE_PATH: item.ROUTE_PATH
                 });
             })
             for (let key in obj) {

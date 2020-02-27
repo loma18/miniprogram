@@ -45,7 +45,7 @@ export default {
       if (path == currentPath) {
         return;
       }
-      this.$router.push("/" + path);
+      this.$router.push("/admin/" + path);
     },
     getPath() {
       let path = this.$router.history.current.path.replace(/(^\/|\/$)/g, ""),

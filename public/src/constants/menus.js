@@ -1,12 +1,12 @@
-import { ROUTE_PATH } from '~/constants/route';
-
+import { ROUTE_PATH } from '~/constants/routes';
+const rootPath = '/admin';
 export const menus = [
   {
     key: 'home',
     title: '首页',
     icon: 's-home',
     children: [],
-    path: ROUTE_PATH.home
+    path: rootPath + ROUTE_PATH.home.path
   },
   {
     key: 'system',
@@ -18,17 +18,17 @@ export const menus = [
         title: 'Banner管理',
         icon: 'picture',
         children: [],
-        path: ROUTE_PATH.banners
+        path: rootPath + ROUTE_PATH.banners.path
       },
       {
         key: 'params',
         title: '系统参数',
         icon: 'help',
         children: [],
-        path: ROUTE_PATH.systemParams
+        path: rootPath + ROUTE_PATH.systemParams.path
       }
     ],
-    path: ROUTE_PATH.system,
+    path: rootPath + ROUTE_PATH.system.path,
     defaultChildKey: 'banners'
   }
 ];

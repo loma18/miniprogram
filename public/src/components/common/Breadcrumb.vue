@@ -25,6 +25,7 @@ export default {
         .replace(/(^\/|\/$)/g, "")
         .split("/");
       let resultList = this.setPathList(list, menus);
+      if(resultList.length===0 && )
       this.pathList = resultList;
     },
     setPathList(list, menuList) {
