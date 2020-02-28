@@ -6,13 +6,17 @@
 
 <script>
 export default {
-  
+  mounted() {
+    let isLogin = window.localStorage.getItem("username");
+    if (!isLogin) {
+      this.$router.push("/user/login");
+    }
+  }
 };
 </script>
 
 <style scope>
 #miniprogram {
   font-family: Helvetica, sans-serif;
-  text-align: center;
 }
 </style>

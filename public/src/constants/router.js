@@ -5,9 +5,12 @@ import Params from '~/pages/system/params/Index';
 import Login from '~/pages/login/Index';
 import NotFound from '~/components/common/404';
 import { ROUTE_PATH } from '~/constants/routes';
-console.log(ROUTE_PATH);
 
 export const routes = [
+  {
+    path: ROUTE_PATH.login.path,
+    component: Login
+  },
   {
     path: '/',
     redirect: ROUTE_PATH.admin.path
@@ -41,10 +44,6 @@ export const routes = [
         component: NotFound
       }
     ]
-  },
-  {
-    path: ROUTE_PATH.login.path,
-    component: Login
   },
   {
     path: '/*',

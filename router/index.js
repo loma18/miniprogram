@@ -4,7 +4,6 @@ let router = express.Router();
 const qs = require("querystring");
 const sqlConnect = require('../sqlConnect');
 const path = require('path');
-const sendEmail = require('./sendEmail.js');
 const request = require('request');
 let fs = require('fs-extra');
 
@@ -55,14 +54,5 @@ router.get('/getClientInfo', (req, res) => {
         console.log('msg', msg);
     });
 })
-
-router.post('/sendMsg', (req, res) => {
-    req.on("data", (data) => {
-        let str = data.toString(),
-            obj = JSON.parse(str);
-        sendEmail.send(obj, res);
-    })
-})
-
 
 module.exports = router;

@@ -48,7 +48,7 @@ export default {
         linkUrl: "",
         remark: "",
         status: 1,
-        order: ""
+        order: 0
       }
     };
   },

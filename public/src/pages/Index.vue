@@ -10,15 +10,13 @@
             <breadcrumb></breadcrumb>
           </el-col>
           <el-col :span="6">
-            <el-dropdown>
+            <el-dropdown @command="handleCommand">
               <i class="el-icon-setting" style="margin-right: 15px"></i>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>查看</el-dropdown-item>
-                <el-dropdown-item>新增</el-dropdown-item>
-                <el-dropdown-item>删除</el-dropdown-item>
+                <el-dropdown-item command="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <span>王小虎</span>
+            <span>{{username}}</span>
           </el-col>
         </el-row>
       </el-header>
@@ -39,16 +37,22 @@
 import LeftMenu from "~/components/LeftMenu";
 import Breadcrumb from "~/components/common/Breadcrumb";
 export default {
+  data() {
+    return {
+      username: window.localStorage.getItem("username")
+    };
+  },
   components: {
     "left-menu": LeftMenu,
     breadcrumb: Breadcrumb
   },
-  methods: {},
-  mounted() {
-    let isLogin = window.localStorage.getItem("username");
-    if (!isLogin) {
-      this.$router.push("/user/login");
-    }
+  methods: {
+      handleCommand(cmd){
+          if(cmd == 'logout'){
+              window.localStorage.removeItem('username');
+              this.$router.push('/user/login');
+          }
+      }
   }
 };
 </script>

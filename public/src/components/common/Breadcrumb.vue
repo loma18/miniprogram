@@ -5,7 +5,10 @@
         v-for="(item,index) in pathList"
         :key="item.key"
         :to="(index ===pathList.length-1?'': item.path)"
-      ><i :class="'el-icon-' + item.icon"></i>{{item.title}}</el-breadcrumb-item>
+      >
+        <i :class="'el-icon-' + item.icon"></i>
+        {{item.title}}
+      </el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -25,7 +28,6 @@ export default {
         .replace(/(^\/|\/$)/g, "")
         .split("/");
       let resultList = this.setPathList(list, menus);
-      if(resultList.length===0 && )
       this.pathList = resultList;
     },
     setPathList(list, menuList) {
@@ -41,7 +43,9 @@ export default {
             });
             list.splice(i, 1);
             if (list.length > 0) {
-              resultList = resultList.concat(this.setPathList(list, menuList[j].children));
+              resultList = resultList.concat(
+                this.setPathList(list, menuList[j].children)
+              );
             } else {
               return resultList;
             }
@@ -52,9 +56,9 @@ export default {
     }
   },
   watch: {
-      $route(to,from){
-          this.getData();
-      }
+    $route(to, from) {
+      this.getData();
+    }
   },
   beforeMount() {
     this.getData();
